@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.1",
+    "browserstack-local": "^1.5.6",
+    "rimraf": "^2.5.4"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
