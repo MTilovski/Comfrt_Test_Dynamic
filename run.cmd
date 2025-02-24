@@ -1,0 +1,1 @@
+npx playwright test comfrt-poc/src/tests/E2E.spec.ts --headed --reporter=html

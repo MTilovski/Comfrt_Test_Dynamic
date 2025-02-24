@@ -1,6 +1,6 @@
 export default class HoodieItems {
 
-    static readonly cloudZipHoodie = 'cloud-zip-hoodie';
-    static readonly tranquilHoodie = 'tranquil-hoodie';
-    static readonly signatureFitHoodie = 'signature-fit-unisex-hoodie';
+    static readonly CLOUD_ZIP_HOODIE = 'cloud-zip-hoodie';
+    static readonly TRANQUIL_HOODIE = 'tranquil-hoodie';
+    static readonly SIGNATURE_FIT_UNISEX_HOODIE = 'signature-fit-unisex-hoodie';
 }

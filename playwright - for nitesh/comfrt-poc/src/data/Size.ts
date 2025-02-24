@@ -1,6 +1,6 @@
 export default class Size {
 
-    static readonly large = 'L';
-    static readonly medium = 'M';
-    static readonly small = 'S';
+    static readonly LARGE = 'L';
+    static readonly MEDIUM = 'M';
+    static readonly SMALL = 'S';
 }

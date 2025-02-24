@@ -1,7 +1,5 @@
 import test, { Page, expect } from "@playwright/test";
 import UIActions from "framework/actions/UIActions";
-// import Assert from "@asserts/Assert";
-import CommonConstants from "framework/constants/CommonConstants";
 import HomePageConstants from "framework/constants/HomePageConstants";
 import HomePage from "../pages/HomePage";
 import UIElementActions from "framework/actions/UIElementActions";
@@ -28,8 +26,15 @@ export default class HomeFunctions {
      * Launch the Application
      */
     public async launchWebSite() {
+
+
+        const { chromium } = require("playwright");
+        const smartuiSnapshot = require("@lambdatest/playwright-driver");
+
         await test.step(`Launching the web site`, async () => {
-            await this.ui.goto(process.env.BASE_URL, HomePageConstants.HOME_PAGE);
+            await this.page.goto("https://comfrt.com/?__orly_origin=qa-bento-stage");
+            // await smartuiSnapshot.smartuiSnapshot(this.page, "Screenshot Name");
+            // await this.page.evaluate((_) => { }, `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'HomePageSS' } })}`);
             await this.page.waitForTimeout(3000);
         });
     }
@@ -77,5 +82,15 @@ export default class HomeFunctions {
             await this.page.locator(HomePage.BANNER_BUTTON).waitFor();
             await this.page.locator(HomePage.BANNER_BUTTON).click();
          });
+    }
+    public async selectRandomCategory(number: number){
+        await test.step('Selecting a random category', async() =>{
+        let RANDPM_CATEGORY = `(//*[@data-orly-type="main_menu_item_desktop"])[${number}]`;
+        await this.page.locator(RANDPM_CATEGORY).click();
+        const grabTitle = await this.page.locator(RANDPM_CATEGORY).textContent();
+        await console.log(grabTitle);
+        return grabTitle;
+
+        });
     }
 }

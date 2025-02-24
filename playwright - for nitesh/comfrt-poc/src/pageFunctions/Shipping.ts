@@ -1,6 +1,5 @@
 import test, { Page, expect } from "@playwright/test";
 import UIActions from "framework/actions/UIActions";
-// import Assert from "@asserts/Assert";
 import AlertActions from "framework/actions/AlertActions";
 import Shipping from "pages/Shipping";
 

@@ -1,6 +1,6 @@
 export default class Color {
 
-    static readonly snow = 'Snow';
-    static readonly wolfGrey = 'Wolf Grey';
-    static readonly latte = 'Latte';
+    static readonly SNOW = 'Snow';
+    static readonly WOLF_GRAY = 'Wolf Grey';
+    static readonly LATTE = 'Latte';
 }

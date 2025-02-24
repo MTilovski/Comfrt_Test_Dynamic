@@ -1,12 +1,12 @@
 export default class Credentials {
 
-    static readonly email = 'test@local.com';
-    static readonly country = 'DE';
-    static readonly firstName = 'Testfirst';
-    static readonly lastName = 'Testlast';
-    static readonly adress = 'MainSt12A';
-    static readonly city = 'Munich';
-    static readonly zip = '80331';
-    static readonly phone = '+4915510830069';
+    static readonly EMAIL = 'test@local.com';
+    static readonly COUNTRY = 'DE';
+    static readonly FIRST_NAME = 'Testfirst';
+    static readonly LAST_NAME = 'Testlast';
+    static readonly ADDRESS = 'MainSt12A';
+    static readonly CITY = 'Munich';
+    static readonly ZIP = '80331';
+    static readonly PHONE = '+4915510830069';
 
 }

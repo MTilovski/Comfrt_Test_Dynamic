@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import HomeFunctions from "pageFunctions/HomePage";
 import { test } from "../browserstack/fixture";
 import PLPageFunctions from 'pageFunctions/PLPage';
-import PDPFunctions from 'pageFunctions/PDPPage';
+import PDPFunctions from 'pageFunctions/PDPage';
 import SideCartFunctions from 'pageFunctions/Sidecart';
 import CheckOutFunctions from 'pageFunctions/CheckOut';
 import Category from 'data/CategoryData';

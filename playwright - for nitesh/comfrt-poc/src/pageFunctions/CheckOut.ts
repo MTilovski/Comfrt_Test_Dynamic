@@ -1,9 +1,5 @@
 import test, { Page, expect } from "@playwright/test";
 import UIActions from "framework/actions/UIActions";
-// import Assert from "@asserts/Assert";
-import CommonConstants from "framework/constants/CommonConstants";
-import HomePageConstants from "framework/constants/HomePageConstants";
-import HomePage from "../pages/HomePage";
 import UIElementActions from "framework/actions/UIElementActions";
 import AlertActions from "framework/actions/AlertActions";
 
@@ -16,6 +12,7 @@ dotenv.config({ path: "playwright - for nitesh\\comfrt-poc\\.env" });
 export default class CheckOutFunctions {    
     private ui: UIActions;
     private ae: AlertActions;
+    public itemPriceCheckOutPage: string;
 
     public getPage(): Page {
         return this.page;
@@ -24,6 +21,7 @@ export default class CheckOutFunctions {
     constructor(private page: Page) {
         this.ui = new UIActions(page);
         this.ae = new AlertActions(page);
+        this.itemPriceCheckOutPage = this.itemPriceCheckOutPage;
     }
     public async fillCredentials(email: string, country: string, name: string, lastName:string, adress: string, city: string,
         zip: string, phone: string 
@@ -40,12 +38,19 @@ export default class CheckOutFunctions {
 
             });          
     }
-public async clickContinueToShippingButton(){
+    public async clickContinueToShippingButton(){
             await test.step('Clicking the Continue to shipping Button', async() => {
                await this.ui.element(CheckOut.CONTINUE_TO_SHIPPING_BUTTON,'Continue to shipping').waitForPresent();
                await this.ui.element(CheckOut.CONTINUE_TO_SHIPPING_BUTTON,'Continue to shipping').click();
-            }) 
+            }); 
 
     }  
+ 
+    public async grabCheckoutItemPrice(){
+        await test.step('Verify that the item price is visable and grab the value', async() =>{
+              this.itemPriceCheckOutPage = await this.page.locator(CheckOut.CHECKOUT_ITEM_PRICE).textContent();
+              await console.log('the item price on the checkout page is', this.itemPriceCheckOutPage)
+              return this.itemPriceCheckOutPage;
+            });
+    }  
 }
-

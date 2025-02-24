@@ -2,7 +2,7 @@ import { expect } from '@playwright/test';
 import HomeFunctions from "pageFunctions/HomePage";
 import { test } from "../browserstack/fixture";
 import PLPageFunctions from 'pageFunctions/PLPage';
-import PDPFunctions from 'pageFunctions/PDPPage';
+import PDPFunctions from 'pageFunctions/PDPage';
 import SideCartFunctions from 'pageFunctions/Sidecart';
 import CheckOutFunctions from 'pageFunctions/CheckOut';
 import Category from 'data/CategoryData';
@@ -34,17 +34,17 @@ test('Complete Shopping Journey', async ({page}) => {
     await home.verifyHomePageBanner();
     await home.verifyLogo();
 // Navigate to a specific category    
-    await home.navigateToCategory(Category.hoodeis);
+    await home.navigateToCategory(Category.HOODIES);
 // Select an item and specs    
-    await plp.selectItem(HoodieItems.cloudZipHoodie);
-    await pdp.selectCollor(Color.snow);
-    await pdp.selectSize(Size.large);
+    await plp.selectItem(HoodieItems.CLOUD_ZIP_HOODIE);
+    await pdp.selectCollor(Color.SNOW);
+    await pdp.selectSize(Size.LARGE);
 // Add item to cart and click checkout button    
     await pdp.addItemToCart();
     await sidecart.verifyItemsInCart();
     await sidecart.clickCheckOutButton();
 // Insert Email, Country/Region, First name, Last name, Adress, City, Postcode, Phone number
-    await checkout.fillCredentials(Credentials.email,Credentials.country,Credentials.firstName,Credentials.lastName,Credentials.adress,Credentials.city,Credentials.zip,Credentials.phone);
+    await checkout.fillCredentials(Credentials.EMAIL,Credentials.COUNTRY,Credentials.FIRST_NAME,Credentials.LAST_NAME,Credentials.ADDRESS,Credentials.CITY,Credentials.ZIP,Credentials.PHONE);
     await checkout.clickContinueToShippingButton();
 
 
