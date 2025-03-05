@@ -9,7 +9,10 @@
   "dependencies": {
     "@lambdatest/playwright-driver": "^1.0.6",
     "@lambdatest/smartui-cli": "^4.0.21",
+    "csv-parser": "^3.2.0",
+    "csv-writer": "^1.6.0",
     "dotenv": "^16.4.7",
+    "fs": "^0.0.1-security",
     "playwright": "^1.50.1"
   }
 }

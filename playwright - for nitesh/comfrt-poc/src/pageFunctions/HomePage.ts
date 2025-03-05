@@ -33,8 +33,6 @@ export default class HomeFunctions {
 
         await test.step(`Launching the web site`, async () => {
             await this.page.goto("https://comfrt.com/?__orly_origin=qa-bento-stage");
-            // await smartuiSnapshot.smartuiSnapshot(this.page, "Screenshot Name");
-            // await this.page.evaluate((_) => { }, `lambdatest_action: ${JSON.stringify({ action: 'smartui.takeScreenshot', arguments: { fullPage: true, screenshotName: 'HomePageSS' } })}`);
             await this.page.waitForTimeout(3000);
         });
     }
@@ -66,6 +64,8 @@ export default class HomeFunctions {
     public async verifyLogo(){
         await test.step('verify that the logo is present', async() => {
             await this.ui.element(HomePage.LOGO,'verify logo').waitForPresent();
+            await this.ui.element(HomePage.LOGO,'click logo').click();
+            await this.ui.element(HomePage.BANNER_BUTTON,'verify user is still on homepage').waitForPresent();
         });
     }
     
@@ -93,4 +93,95 @@ export default class HomeFunctions {
 
         });
     }
+    public async verifyCollectionLinks(){
+        await test.step('verify all collection links', async() => {
+            await this.ui.element(HomePage.ALL_COLLECTION_LINKS,'verify logo').waitForPresent();
+        });
+    }
+    public async collectionLinkNavigation(collectionTitle: string){
+        await test.step('verify that all collection links work properly and navigate to homepage', async() => {
+            let COLLETION_LINK = `//*[@data-orly-type="main_menu_item_desktop"and contains(text(),"${collectionTitle}")]`;
+            let COLLECTION_TITLE = `(//h1[contains(text(),"${collectionTitle}")])[1]`;
+            await this.ui.element(HomePage.ALL_COLLECTION_LINKS,'verify logo').waitForPresent();
+            await this.page.locator(COLLETION_LINK).click();
+            await this.page.locator(COLLECTION_TITLE).isVisible();
+            await this.ui.element(HomePage.LOGO,'click logo').click();
+
+        });
+    }
+    public async verifyTicker(){
+        await test.step('verify that the Ticker is present', async() => {
+            await this.ui.element(HomePage.TICKER,'verify logo').waitForPresent();
+        });
+    }   
+    
+    public async verifyAmbassadorProgram(){
+        await test.step('verify Ambasador Program', async() => {
+            await this.ui.element(HomePage.AMBASDOR_PROGRAM_TEXT,'verify text').waitForPresent();
+        });
+    } 
+
+    public async checkLinks(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            let pageTitle = `//h1[contains(text(),"${linkTitle}")]`
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).isVisible();
+            await this.page.locator(link).click();
+            await this.page.locator(pageTitle).waitFor();
+            await this.page.locator(pageTitle).isVisible();
+            await this.page.locator(HomePage.LOGO).scrollIntoViewIfNeeded();
+            await this.page.locator(HomePage.LOGO).click();
+
+        });
+    } 
+    public async checkFAQLinks(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).click();
+            await this.page.locator(HomePage.FAQ_TITLE_VERIFICATION).waitFor();
+            await this.page.locator(HomePage.FAQ_TITLE_VERIFICATION).isVisible();
+            await this.page.locator(HomePage.LOGO).scrollIntoViewIfNeeded();
+            await this.page.locator(HomePage.LOGO).click();
+            await this.page.waitForTimeout(500);
+        });
+    } 
+    public async checkMindsetLinks(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).click();
+            await this.page.locator(HomePage.COMFRT_MINDSET_TEXT_VERIFICATION).waitFor();
+            await this.page.locator(HomePage.COMFRT_MINDSET_TEXT_VERIFICATION).isVisible();
+            await this.page.locator(HomePage.LOGO).scrollIntoViewIfNeeded();
+            await this.page.locator(HomePage.LOGO).click();
+            await this.page.waitForTimeout(500);
+        });
+    } 
+    public async checkContactLinks(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).click();
+            await this.page.locator(HomePage.CONTACT_PAGE_TEXT_VERIFICATION).waitFor();
+            await this.page.locator(HomePage.CONTACT_PAGE_TEXT_VERIFICATION).isVisible();
+            await this.page.locator(HomePage.LOGO).scrollIntoViewIfNeeded();
+            await this.page.locator(HomePage.LOGO).click();
+            await this.page.waitForTimeout(500);
+        });
+    } 
+    public async checkExchangestLinks(linkTitle: string){
+        await test.step('Check if the links in the footer are wirling properly', async() => {
+            let link = `//a[contains(text(),"${linkTitle}")]`;
+            await this.page.locator(link).scrollIntoViewIfNeeded();
+            await this.page.locator(link).click();
+            await this.page.locator(HomePage.RETURNS_EXCHANGE_TEXT).waitFor();
+            await this.page.locator(HomePage.RETURNS_EXCHANGE_TEXT).isVisible();
+            await this.page.locator(HomePage.BACK_TO_SHOP_BUTTON).click();
+            await this.page.waitForTimeout(500);
+        });
+    } 
+
 }
+
