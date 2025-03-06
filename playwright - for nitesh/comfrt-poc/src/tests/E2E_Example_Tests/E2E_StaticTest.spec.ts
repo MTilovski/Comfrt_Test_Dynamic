@@ -48,7 +48,7 @@ test('Complete Shopping Journey - Static test', async ({page}) => {
 // Select an item and specs    
     await plp.selectItem(HoodieItems.CLOUD_ZIP_HOODIE);
 // Site navigates to PLP 
-    await pdp.verifyItemTitle();
+    await pdp.verifyDynamicItemTitle();
     await pdp.selectCollor(Color.SNOW);
     await pdp.selectSize(Size.LARGE);
     await pdp.grabItemPrice();

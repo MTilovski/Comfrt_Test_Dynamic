@@ -117,7 +117,9 @@ export default class HomeFunctions {
     
     public async verifyAmbassadorProgram(){
         await test.step('verify Ambasador Program', async() => {
+            await this.page.waitForTimeout(500);
             await this.ui.element(HomePage.AMBASDOR_PROGRAM_TEXT,'verify text').waitForPresent();
+            await this.page.locator(HomePage.AMBASDOR_PROGRAM_TEXT).isVisible();
         });
     } 
 

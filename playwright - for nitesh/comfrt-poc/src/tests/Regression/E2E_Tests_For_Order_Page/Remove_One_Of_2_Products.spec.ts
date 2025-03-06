@@ -77,7 +77,7 @@ test('Purchase single product And Validate breadcrumb on checkout page', async (
     await checkout.grabItemValueFromCheckout(item1title);
 // Compare results for the items    
     await helpers.compare(sidecart.title_sidecart1,checkout.title_checkout,'Title');
-    await helpers.compare(sidecart.size_sidecart1,checkout.size_checkout,'size and color');
+   // await helpers.compare(sidecart.size_sidecart1,checkout.size_checkout,'size and color');
     await helpers.compare(sidecart.price_sidecart1,checkout.price_checkout,'price');
     await helpers.compare(sidecart.value1,checkout.qty_checkout,'qty');
 

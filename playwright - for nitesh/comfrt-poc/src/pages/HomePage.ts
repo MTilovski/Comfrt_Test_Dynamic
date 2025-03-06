@@ -5,7 +5,7 @@ export default class HomePage {
     static readonly BANNER_BUTTON = '//button[contains(text(),"Shop Your Hoodie")]';
     static readonly ALL_COLLECTION_LINKS = '//*[@data-orly-type="main_menu_item_desktop"]/..';
     static readonly TICKER = '//header/div[1]'
-    static readonly AMBASDOR_PROGRAM_TEXT = 'span[@data-pf-type="Text" and contains(text(),"The Comfrt ambassador program")]'
+    static readonly AMBASDOR_PROGRAM_TEXT = '//span[@data-pf-type="Text" and contains(text(),"The Comfrt ambassador program")]'
     static readonly SIGN_UP_FOOTER_BUTTON = '//button[contains(text(),"Sign Up Now")]';
     static readonly FAQ_TITLE_VERIFICATION = '//div[contains(text(),"FAQs")]';
     static readonly COMFRT_MINDSET_TEXT_VERIFICATION = '//p[contains(text(),"At Comfrt, we understand that caring for your mental")]';

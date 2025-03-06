@@ -19,6 +19,7 @@ export default class SideCartFunctions {
     public discount_sidecart2: string;
     public value2: any;
     public number: string;
+    public subtotal: string;
 
     public getPage(): Page {
         return this.page;
@@ -186,5 +187,15 @@ export default class SideCartFunctions {
             }
         })
 
+    }
+    public async grabSubtotalSidecartPrice(){
+        await test.step('Grab the subtotal price from the sidecart', async() =>{
+        await this.ui.element(SideCart.SICE_CART_SUBTOTAL,'subtotal price').waitForPresent();
+        const subtotal = await this.page.locator(SideCart.SICE_CART_SUBTOTAL,).textContent();
+        this.subtotal = subtotal
+        await console.log("the subtotal price is",subtotal);
+        return subtotal
+
+        })
     }
 }

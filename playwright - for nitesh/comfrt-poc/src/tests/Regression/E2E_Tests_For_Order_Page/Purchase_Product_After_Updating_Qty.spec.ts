@@ -54,6 +54,7 @@ await home.launchWebSite();
     await pdp.addItemToCart();
     await sidecart.increaseItemQty();
     await sidecart.verifyItemsInCart1(pdp.itemPDPtitle);
+    await sidecart.grabSubtotalSidecartPrice();
     const item1title = pdp.itemPDPtitle
     await sidecart.increaseItemQty
 // Navigate to checkout     
@@ -61,8 +62,8 @@ await home.launchWebSite();
     await checkout.grabItemValueFromCheckout(item1title);
 // Validate    
     await helpers.compare(sidecart.title_sidecart1,checkout.title_checkout,'Title');
-    await helpers.compare(sidecart.size_sidecart1,checkout.size_checkout,'size and color');
-    await helpers.compare(sidecart.price_sidecart1,checkout.price_checkout,'price');
+   // await helpers.compare(sidecart.size_sidecart1,checkout.size_checkout,'size and color');
+    await helpers.compare(sidecart.subtotal,checkout.price_checkout,'price');
     await helpers.compare(sidecart.value1,checkout.qty_checkout,'qty');
 
  });

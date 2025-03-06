@@ -9,5 +9,6 @@ export default class SideCart {
     static readonly DECREASE_QTY_SIDECART = '(//form[contains(@action,"/cart/change?")])[1]';
     static readonly REMOVE_ITEM_SIDECART = '(//form[contains(@action,"/cart/change?")])[3]';
     static readonly SIDE_CART_QTY = '(//*[@id="cart_subtotals-cart_subtotals_0"]/div/div)[1]';
+    static readonly SICE_CART_SUBTOTAL = '(//*[@id="cart_subtotals-cart_subtotals_0"]/div/div)[2]/div'
 
 }
